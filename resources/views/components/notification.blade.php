@@ -12,4 +12,14 @@
         </div>
 </div>
 @endif
+@if(session('message'))
+<div class="notification is-primary is-light">
+    <button class="delete"></button>
+         <div>
+            <div>{{ __('Message') }}</div>
+            <p>{{session('message')}}</p>
+        </div>
+</div>
+@endif
+
 

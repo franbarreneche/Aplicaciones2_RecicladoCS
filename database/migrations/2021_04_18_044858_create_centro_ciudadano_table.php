@@ -16,8 +16,8 @@ class CreateCentroCiudadanoTable extends Migration
         Schema::create('centro_ciudadano', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('centro_id')->constrained();
-            $table->foreignId('ciudadano_id')->constrained();
+            $table->foreignId('centro_id')->constrained()->onDelete('cascade');
+            $table->foreignId('ciudadano_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -10,6 +10,8 @@ class Ciudadano extends Model
 {
     use HasFactory;
 
+    protected $guarded = ["id"];
+
     // accessors
     public function getNombreCompletoAttribute() {
         return "{$this->nombre} {$this->apellido}";

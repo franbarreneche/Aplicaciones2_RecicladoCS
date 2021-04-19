@@ -20,9 +20,9 @@ class CreateRecicladosTable extends Migration
             $table->string('objeto');
             $table->date('fecha_contacto')->nullable();
             $table->date('fecha_recoleccion')->nullable();
-            $table->foreignId('ciudadano_id')->constrained();
-            $table->foreignId('recolector_id')->constrained('ciudadanos');
-            $table->foreignId('centro_id')->constrained();
+            $table->foreignId('ciudadano_id')->constrained()->onDelete('cascade');
+            $table->foreignId('recolector_id')->constrained('ciudadanos')->onDelete('cascade');;
+            $table->foreignId('centro_id')->constrained()->onDelete('cascade');;
         });
     }
 

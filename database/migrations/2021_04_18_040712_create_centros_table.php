@@ -20,7 +20,7 @@ class CreateCentrosTable extends Migration
             $table->string('horario');
             $table->string('telefono');
             $table->string('sigla')->unique();
-            $table->foreignId('coordinador_id')->nullable()->constrained('ciudadanos');
+            $table->foreignId('coordinador_id')->nullable()->constrained('ciudadanos')->onDelete('set null');
         });
     }
 
