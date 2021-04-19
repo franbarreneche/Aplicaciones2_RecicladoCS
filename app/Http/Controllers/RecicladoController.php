@@ -47,8 +47,7 @@ class RecicladoController extends Controller
      */
     public function show(Reciclado $reciclado)
     {
-        $ret = Reciclado::findOrFail($reciclado->id);
-        return $ret->recolector;
+        return view('models.reciclado.show',["reciclado" => $reciclado]);
     }
 
     /**

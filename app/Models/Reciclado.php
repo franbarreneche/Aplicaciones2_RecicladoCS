@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class Reciclado extends Model
     const OBJETOS = ["CHATARRA","ELECTRONICO", "OTRO"];
 
 
+    // relaciones
     public function ciudadano() {
         return $this->belongsTo(Ciudadano::class);
     }

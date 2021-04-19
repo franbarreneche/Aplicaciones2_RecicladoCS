@@ -15,7 +15,7 @@ class CentroController extends Controller
     public function index()
     {
         $centros = Centro::all()->take(10);
-        return $centros;
+        return view('models.centro.index',["centros" => $centros]);
     }
 
     /**
@@ -47,7 +47,7 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
-        return $centro->reciclados;
+        return view('models.centro.show',["centro" => $centro]);
     }
 
     /**
