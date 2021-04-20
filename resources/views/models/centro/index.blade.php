@@ -14,7 +14,16 @@
                 <tr>
                     <td>{{$centro->sigla}}</td>
                     <td>{{$centro->nombre}}</td>
-                    <td><a class="button is-info is-small" href="{{route('centros.show',$centro->id)}}">Ver</a></td>
+                    <td>
+                        <div class="buttons">
+                            <a class="button is-info is-small" href="{{route('centros.show',$centro->id)}}">Ver</a>
+                            <form method="POST" action="{{route('centros.destroy',$centro->id)}}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="button is-danger is-small">Borrar</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
