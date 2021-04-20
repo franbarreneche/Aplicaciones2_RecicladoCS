@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Ciudadano;
+use App\Models\Centro;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CiudadanoPolicy
+class CentroPolicy
 {
     use HandlesAuthorization;
 
@@ -39,10 +39,10 @@ class CiudadanoPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ciudadano  $ciudadano
+     * @param  \App\Models\Centro  $centro
      * @return mixed
      */
-    public function view(User $user, Ciudadano $ciudadano)
+    public function view(User $user, Centro $centro)
     {
         //
     }
@@ -62,10 +62,10 @@ class CiudadanoPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ciudadano  $ciudadano
+     * @param  \App\Models\Centro  $centro
      * @return mixed
      */
-    public function update(User $user, Ciudadano $ciudadano)
+    public function update(User $user, Centro $centro)
     {
         //
     }
@@ -74,10 +74,10 @@ class CiudadanoPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ciudadano  $ciudadano
+     * @param  \App\Models\Centro  $centro
      * @return mixed
      */
-    public function delete(User $user, Ciudadano $ciudadano)
+    public function delete(User $user, Centro $centro)
     {
         //
     }
@@ -86,10 +86,10 @@ class CiudadanoPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ciudadano  $ciudadano
+     * @param  \App\Models\Centro  $centro
      * @return mixed
      */
-    public function restore(User $user, Ciudadano $ciudadano)
+    public function restore(User $user, Centro $centro)
     {
         //
     }
@@ -98,10 +98,10 @@ class CiudadanoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ciudadano  $ciudadano
+     * @param  \App\Models\Centro  $centro
      * @return mixed
      */
-    public function forceDelete(User $user, Ciudadano $ciudadano)
+    public function forceDelete(User $user, Centro $centro)
     {
         //
     }

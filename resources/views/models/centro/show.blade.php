@@ -6,7 +6,7 @@
         <fieldset disabled>
         <div class="field">
             <label for="coordinador" class="label">Coordinador:</label>
-            <input class="input" typte="text" name="coordinador" value="{{$centro->coordinador->nombreCompleto}}" >
+            <input class="input" typte="text" name="coordinador" value="{{$centro->coordinador->nombreCompleto ?? 'No definido'}}" >
         </div>
         <div class="field">
             <label for="horario" class="label">Horario:</label>

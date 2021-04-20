@@ -19,6 +19,10 @@
                 @endforeach
             </tbody>
         </table>
-        <x-backbutton />
+        <div class="has-text-centered">{{$centros->links()}}</div>
+        <div class="buttons">
+            <x-backbutton />
+            <a class="button is-primary" href="{{route('centros.create')}}">Crear Nuevo</a>
+        </div>
     </div>
 @endsection

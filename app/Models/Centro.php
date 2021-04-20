@@ -9,6 +9,8 @@ class Centro extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function coordinador() {
         return $this->belongsTo(Ciudadano::class,"coordinador_id");
     }
