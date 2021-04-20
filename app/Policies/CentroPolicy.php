@@ -32,7 +32,9 @@ class CentroPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**
@@ -44,7 +46,9 @@ class CentroPolicy
      */
     public function view(User $user, Centro $centro)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**

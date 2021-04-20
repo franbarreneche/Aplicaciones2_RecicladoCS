@@ -32,7 +32,9 @@ class RecicladoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**
@@ -44,7 +46,9 @@ class RecicladoPolicy
      */
     public function view(User $user, Reciclado $reciclado)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**

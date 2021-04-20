@@ -32,7 +32,9 @@ class CiudadanoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**
@@ -44,7 +46,9 @@ class CiudadanoPolicy
      */
     public function view(User $user, Ciudadano $ciudadano)
     {
-        //
+        if($user->isMunicipal()) {
+            return true;
+        }
     }
 
     /**
