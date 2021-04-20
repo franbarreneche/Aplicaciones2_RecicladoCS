@@ -30,11 +30,44 @@
                 <tr>
                     <td>{{$recolector->id}}</td>
                     <td>{{$recolector->nombre}} {{$recolector->apellido}}</td>
-                    <td><a class="button is-info is-small" href="{{route('ciudadanos.show',$recolector->id)}}">Ver</a>
+                    <td>
+                    <div class="buttons">
+                        <a class="button is-info is-small" href="{{route('ciudadanos.show',$recolector->id)}}">Ver</a>
+                        <form method="POST" action="{{route('centros.recolectores.detach',$centro->id)}}">
+                            @csrf
+                            <input type="hidden" name="recolector_id" value="{{$recolector->id}}">
+                            <button class="button is-danger is-small">Quitar</button>
+                        </form>
+                    </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <form method="POST" action="{{route('centros.recolectores.attach',$centro->id)}}">
+            @csrf
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Registrar Recolector</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <div class="select">
+                            <select name="recolector_id">
+                                <option value=""></option>
+                                @foreach($ciudadanos as $ciudadano)
+                                    <option value="{{$ciudadano->id}}">{{$ciudadano->apellido.", ".$ciudadano->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="control ml-2">
+                            <button type="submit" class="button is-link">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
         <label class="label" for="">Reciclados:</label>
         <table class="table is-fullwidth">
             <thead>

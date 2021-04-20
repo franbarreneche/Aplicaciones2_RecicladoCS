@@ -27,6 +27,8 @@ Route::view('dashboard', 'dashboard')
 
 Route::middleware(['auth'])->group(function() {
     Route::resource('/ciudadanos',CiudadanoController::class);
+    Route::post('/centros/{centro}/attach',[CentroController::class,'attach'])->name('centros.recolectores.attach');
+    Route::post('/centros/{centro}/detach',[CentroController::class,'detach'])->name('centros.recolectores.detach');
     Route::resource('/centros',CentroController::class);
     Route::resource('/reciclados',RecicladoController::class);
 });
