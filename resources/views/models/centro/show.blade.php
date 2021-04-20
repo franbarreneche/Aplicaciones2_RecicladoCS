@@ -60,7 +60,16 @@
                     <td><x-date>{{$reciclado->fecha_recoleccion?? ""}}</x-date></td>
                     <td>{{$reciclado->ciudadano->nombre_completo}}</td>
                     <td>{{$reciclado->recolector->nombre_completo}}</td>
-                    <td><a class="button is-info is-small" href="{{route('reciclados.show',$reciclado->id)}}">Ver</a></td>
+                    <td>
+                        <div class="buttons">
+                            <a class="button is-info is-small" href="{{route('reciclados.show',$reciclado->id)}}">Ver</a>
+                            <form method="POST" action="{{route('reciclados.destroy',$reciclado->id)}}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="button is-danger is-small">Borrar</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

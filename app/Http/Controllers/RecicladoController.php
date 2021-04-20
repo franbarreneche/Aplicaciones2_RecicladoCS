@@ -18,8 +18,7 @@ class RecicladoController extends Controller
      */
     public function index()
     {
-        $reciclados = Reciclado::all()->take(10);
-        return $reciclados;
+        //
     }
 
     /**
@@ -29,6 +28,7 @@ class RecicladoController extends Controller
      */
     public function create(Request $request)
     {
+        $this->authorize('create',Reciclado::class);
         try {
             $centro = Centro::findOrFail($request->id);
             $ciudadanos = Ciudadano::all();
@@ -46,6 +46,7 @@ class RecicladoController extends Controller
      */
     public function store(RecicladoRequest $request)
     {
+        $this->authorize('create',Reciclado::class);
         $validados = $request->validated();
         try {
             Reciclado::create($validados);
@@ -63,6 +64,7 @@ class RecicladoController extends Controller
      */
     public function show(Reciclado $reciclado)
     {
+        $this->authorize('view',$reciclado);
         return view('models.reciclado.show',["reciclado" => $reciclado]);
     }
 
@@ -97,6 +99,12 @@ class RecicladoController extends Controller
      */
     public function destroy(Reciclado $reciclado)
     {
-        //
+        $this->authorize('delete',$reciclado);
+        try{
+            $reciclado->delete();
+        }catch(Exception $e) {
+            return back()->withErrors('Hubo un error al intentar eliminar el reciclado.');
+        }
+        return back()->with(['message' => "El reciclado n° $reciclado->id se ha eliminado correctamente."]);
     }
 }
