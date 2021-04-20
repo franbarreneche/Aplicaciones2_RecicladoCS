@@ -25,4 +25,5 @@ class Ciudadano extends Model
     public function reciclados() {
         return $this->hasMany(Reciclado::class);
     }
+
 }

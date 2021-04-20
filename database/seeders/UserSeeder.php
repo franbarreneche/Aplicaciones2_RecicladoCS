@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
         foreach($ciudadanos as $ciudadano) {
             User::create([
                 "name" => $ciudadano->nombre_completo,
-                "email" => $ciudadano->nombre_completo."@gmail.com",
+                "email" => $ciudadano->nombre.$ciudadano->apellido."@gmail.com",
                 "password" => Hash::make("123456"),
                 "email_verified_at" => now(),
                 "remember_token" => Hash::make(random_int(100,999)),
