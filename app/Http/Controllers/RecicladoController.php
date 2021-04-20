@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecicladoRequest;
+use App\Models\Centro;
+use App\Models\Ciudadano;
 use App\Models\Reciclado;
+use Exception;
 use Illuminate\Http\Request;
 
 class RecicladoController extends Controller
@@ -23,9 +27,15 @@ class RecicladoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        try {
+            $centro = Centro::findOrFail($request->id);
+            $ciudadanos = Ciudadano::all();
+        }catch(Exception $e) {
+            return back()->withErrors("Hubo algun problema, intenta mas tarde");
+        }
+        return view('models.reciclado.create',['centro' => $centro,'ciudadanos' => $ciudadanos]);
     }
 
     /**
@@ -34,9 +44,15 @@ class RecicladoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecicladoRequest $request)
     {
-        //
+        $validados = $request->validated();
+        try {
+            Reciclado::create($validados);
+        }catch(Exception $e) {
+            return back()->withInput($validados)->withErrors("Hubo problemas al intentar crear un nuevo el reciclado.");
+        }
+        return redirect()->route('centros.show',$validados['centro_id'])->with(['message' => "El nuevo reciclado fue agregado exitosamente."]);
     }
 
     /**

@@ -13,6 +13,7 @@ class Reciclado extends Model
     const TRANSPORTES = ["PIE","AUTO","MOTO","CAMIONETA"];
     const OBJETOS = ["CHATARRA","ELECTRONICO", "OTRO"];
 
+    protected $guarded = ['id'];
 
     // relaciones
     public function ciudadano() {

@@ -31,7 +31,6 @@
                     <td>{{$recolector->id}}</td>
                     <td>{{$recolector->nombre}} {{$recolector->apellido}}</td>
                     <td><a class="button is-info is-small" href="{{route('ciudadanos.show',$recolector->id)}}">Ver</a>
-                    <a class="button is-danger is-small" href="">Eliminar</a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -48,14 +47,17 @@
                 <th>Recolector</th>
                 <th>Acciones</th>
             </thead>
+            <tfoot>
+                <tr><th><a class="button is-primary is-small" href="{{route('reciclados.create','id='.$centro->id)}}">Nuevo Reciclado</a></th></tr>
+            </tfoot>
             <tbody>
                 @foreach ($centro->reciclados as $reciclado)
                 <tr>
                     <td>{{$reciclado->id}}</td>
                     <td>{{$reciclado->objeto}}</td>
                     <td>{{$reciclado->transporte}}</td>
-                    <td><x-date>{{$reciclado->fecha_contacto ? $reciclado->fecha_contacto : "-"}}</x-date></td>
-                    <td><x-date>{{$reciclado->fecha_recoleccion ? $reciclado->fecha_recoleccion : "-"}}</x-date></td>
+                    <td><x-date>{{$reciclado->fecha_contacto?? ""}}</x-date></td>
+                    <td><x-date>{{$reciclado->fecha_recoleccion?? ""}}</x-date></td>
                     <td>{{$reciclado->ciudadano->nombre_completo}}</td>
                     <td>{{$reciclado->recolector->nombre_completo}}</td>
                     <td><a class="button is-info is-small" href="{{route('reciclados.show',$reciclado->id)}}">Ver</a></td>
