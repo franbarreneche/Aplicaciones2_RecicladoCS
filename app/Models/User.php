@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function isCoordinador() {
         return $this->rol_id === 3; // si el rol es 3 es coordinador
     }
+
+    public function rol() {
+        return $this->belongsTo(Rol::class);
+    }
 }
