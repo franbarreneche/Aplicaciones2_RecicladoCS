@@ -23,15 +23,15 @@ class RecicladoFactory extends Factory
      */
     public function definition()
     {
-        $centro_id = random_int(1,Centro::all()->count());
+        $centro = Centro::all()->random();
         return [
             "transporte" => Reciclado::TRANSPORTES[random_int(0,3)],
             "objeto" => Reciclado::OBJETOS[random_int(0,2)],
             "fecha_recoleccion" => $this->faker->date("Y-m-d"),
             "fecha_contacto" => $this->faker->date("Y-m-d"),
-            "ciudadano_id" => random_int(1,Ciudadano::all()->count()),
-            "recolector_id" => random_int(1,Ciudadano::all()->count()),
-            "centro_id" => $centro_id
+            "ciudadano_id" => (Ciudadano::where('id',"!=",$centro->coordinador_id)->get())->random()->id,
+            "recolector_id" => $centro->recolectores->random()->id,
+            "centro_id" => $centro->id
         ];
     }
 }

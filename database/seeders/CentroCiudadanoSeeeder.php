@@ -23,7 +23,7 @@ class CentroCiudadanoSeeeder extends Seeder
             for($i = 0; $i<5; $i++) {
                 $id = random_int(1,$cant_ciu);
                 if($centro->coordinador_id != $id)
-                    $recolectores[$i] = $id; //solo lo pongo como recolector de ese centro, si no es coordinador
+                    array_push($recolectores,$id); //solo lo pongo como recolector de ese centro, si no es coordinador
             }
             $centro->recolectores()->attach($recolectores);
         }
