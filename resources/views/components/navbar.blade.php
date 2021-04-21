@@ -36,7 +36,12 @@
             @endguest
             @auth
             <a class="button is-link">
+                <span class="icon is-small">
+                    <i class="far fa-user"></i>
+                  </span>
+                  <span>
                 {{auth()->user()->name}}
+                  </span>
             </a>
             <form action="{{route('logout')}}" method="POST">
                 @csrf
