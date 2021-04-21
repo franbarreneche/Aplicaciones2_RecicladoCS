@@ -13,22 +13,34 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         <!-- Icons -->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer></script>
-
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+            .app {
+                flex:1;
+            }
+        </style>
     </head>
     <body>
         <x-navbar />
-        <section class="section has-background-light">
+        <section class="section has-background-light app">
             <x-notification />
             <div class="container">
                 @yield('content')
             </div>
         </section>
+        <footer class="has-background-link has-text-light p-4">
+            <div class="content has-text-centered">
+              <p>Desarrollado por el grupo 3 para la cátedra Aplicaciones II - <strong class="has-text-light">UPSO</strong> - 2021</p>
+            </div>
+          </footer>
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {

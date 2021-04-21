@@ -1,5 +1,5 @@
 @if ($errors->any())
-<div class="notification is-danger is-light">
+<div class="notification is-danger">
     <button class="delete"></button>
          <div>
             <div>{{ __('Whoops! Something went wrong.') }}</div>
@@ -13,7 +13,7 @@
 </div>
 @endif
 @if(session('message'))
-<div class="notification is-primary is-light">
+<div class="notification is-success">
     <button class="delete"></button>
          <div>
             <div>{{ __('Message') }}</div>
