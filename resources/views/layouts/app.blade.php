@@ -31,8 +31,8 @@
     <body>
         <x-navbar />
         <section class="section has-background-light app">
-            <x-notification />
             <div class="container">
+                <x-notification />
                 @yield('content')
             </div>
         </section>
