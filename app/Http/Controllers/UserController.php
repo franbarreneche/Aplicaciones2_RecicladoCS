@@ -65,7 +65,7 @@ class UserController extends Controller
         }catch(Exception $e) {
             return back()->withInputs($validados)->withErrors("Hubo un problema al intentar crear el nuevo usuario.");
         }
-        return back()->with(['message' => "Se agregó el nuevo usuario correctamente."]);
+        return redirect()->route('users.index')->with(['message' => "Se agregó el nuevo usuario correctamente."]);
     }
 
     /**
