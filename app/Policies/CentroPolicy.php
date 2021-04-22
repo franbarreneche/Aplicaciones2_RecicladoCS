@@ -49,7 +49,7 @@ class CentroPolicy
         if($user->isMunicipal()) {
             return true;
         }
-        if($user->isCoordinador() && $centro->coordinador() && ($user->name === $centro->coordinador->nombre_completo)) {
+        if($user->isCoordinador() && $user->ciudadano && ($user->ciudadano->id === $centro->coordinador_id)) {
             return true;
         }
     }
