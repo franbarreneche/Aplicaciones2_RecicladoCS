@@ -19,7 +19,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('view-any', User::class);
+
         $users = User::paginate(15);
+
         return view('models.user.index',['users' => $users]);
     }
 
@@ -30,8 +33,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', User::class);
+
         $roles = Rol::all();
         $ciudadanos = Centro::join('ciudadanos','ciudadanos.id','coordinador_id')->where('coordinador_id',"!=",null)->get();
+
         return view('models.user.create',['roles' => $roles,'ciudadanos' => $ciudadanos]);
     }
 
@@ -43,7 +49,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $this->authorize('create', User::class);
+
         $validados = $request->validated();
+
         try {
             $user = new User();
             $user->name = $validados['name'];
@@ -67,6 +76,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view', $user);
+
         return view('models.user.show',['user' => $user]);
     }
 
@@ -76,7 +87,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -99,10 +110,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
+        $this->authorize('delete', $user);
+
         try {
-            $resultado = User::destroy($id);
+            $user->delete();
         }catch(Exception $e) {
             return back()->withErrors("Hubo un error al intentar borrar el usuario");
         }
