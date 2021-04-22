@@ -3,6 +3,7 @@
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\CiudadanoController;
 use App\Http\Controllers\RecicladoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/centros/{centro}/detach',[CentroController::class,'detach'])->name('centros.recolectores.detach');
     Route::resource('/centros',CentroController::class);
     Route::resource('/reciclados',RecicladoController::class);
+    Route::resource('/users',UserController::class);
 });
 
 
