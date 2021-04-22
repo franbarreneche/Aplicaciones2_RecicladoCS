@@ -63,7 +63,7 @@ class UserController extends Controller
             $user->email_verified_at = now();
             $user->save();
         }catch(Exception $e) {
-            return back()->withInputs($validados)->withErrors($e->getMessage());
+            return back()->withInputs($validados)->withErrors("Hubo un problema al intentar crear el nuevo usuario.");
         }
         return back()->with(['message' => "Se agregó el nuevo usuario correctamente."]);
     }

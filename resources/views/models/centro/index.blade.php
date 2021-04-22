@@ -17,6 +17,7 @@
                     <td>
                         <div class="buttons">
                             <a class="button is-info is-small" href="{{route('centros.show',$centro->id)}}">Ver</a>
+                            <a class="button is-link is-small" href="{{route('centros.edit',$centro->id)}}">Editar</a>
                             <form method="POST" action="{{route('centros.destroy',$centro->id)}}">
                                 @method('DELETE')
                                 @csrf

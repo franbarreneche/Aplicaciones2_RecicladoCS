@@ -87,7 +87,11 @@ class CentroController extends Controller
      */
     public function edit(Centro $centro)
     {
-        //
+        $this->authorize('update',$centro);
+
+        $ciudadanos = Ciudadano::all();
+
+        return view('models.centro.edit',['centro' => $centro, 'ciudadanos' => $ciudadanos]);
     }
 
     /**
@@ -97,9 +101,18 @@ class CentroController extends Controller
      * @param  \App\Models\Centro  $centro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Centro $centro)
+    public function update(CentroRequest $request, Centro $centro)
     {
-        //
+        $this->authorize('update',$centro);
+
+        $validados = $request->validated();
+
+        try {
+            $centro->update($validados);
+        }catch(Exception $e) {
+            return back()->withInput()->withErrors($e->getMessage());
+        }
+        return back()->with(['message' => "Los datos del centro se han actualizado exitosamente."]);
     }
 
     /**

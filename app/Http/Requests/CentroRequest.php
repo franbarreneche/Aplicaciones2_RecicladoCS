@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CentroRequest extends FormRequest
 {
@@ -25,10 +26,10 @@ class CentroRequest extends FormRequest
     {
         return [
             "nombre" => ["required","max:255"],
-            "sigla" => ["required" , "max:4"],
+            "sigla" => ["required" , "max:4",Rule::unique('centros','sigla')->ignore($this->centro)],
             "horario" => ["required","string","max:255"],
             "telefono" => ["required", "string","max:255"],
-            "coordinador_id" => ["integer","nullable"]
+            "coordinador_id" => ["integer","nullable","exists:ciudadanos,id"]
         ];
     }
 }
